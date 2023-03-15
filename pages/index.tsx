@@ -13,11 +13,9 @@ type Livro = {
   autor: String;
 }
 
-const url:string = "https://livros-next.vercel.app";
-
 export async function getServerSideProps() {
   try {
-    let response = await fetch(`${url}/api/getLivros`);
+    let response = await fetch(`${process.env.URL}/api/getLivros`);
     let livros = await response.json();
 
     return {
@@ -33,7 +31,7 @@ export default function Livros(props: Props) {
 
   const handleDeleteLivro = async (livroId: string) => {
     try {
-      let response = await fetch(`${url}/api/deleteLivro?id=${livroId}`, {
+      let response = await fetch(`${process.env.URL}/api/deleteLivro?id=${livroId}`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -64,7 +62,7 @@ export default function Livros(props: Props) {
                       <p>{livro.autor}</p>
                     </div>
                     <div>
-                      <a href={`${url}/livros/${livro._id}`}>Editar</a>
+                      <a href={`/livros/${livro._id}`}>Editar</a>
                       <button onClick={() => handleDeleteLivro(livro._id as string)}>Deletar</button>
                     </div>
                   </li>

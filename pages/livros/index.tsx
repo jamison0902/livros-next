@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout";
 
-const url:string = "https://livros-next.vercel.app";
-
 export default function AddLivro() {
     const [titulo, setTitulo] = useState("");
     const [resumo, setResumo] = useState("");
@@ -16,7 +14,7 @@ export default function AddLivro() {
         if (titulo && resumo && editora && autor) {
             try {
 
-                let response = await fetch(`${url}/api/addLivro`, {
+                let response = await fetch(`${process.env.URL}/api/addLivro`, {
                     method: "POST",
                     body: JSON.stringify({
                         titulo, resumo, editora, autor

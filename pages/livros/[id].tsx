@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import type { GetStaticPropsContext, GetStaticPropsResult } from "next";
 import Layout from "../../components/Layout";
 
-const url:string = "https://livros-next.vercel.app";
-
 type PageParams = {
     id: string;
 };
@@ -35,7 +33,7 @@ export async function getStaticProps({
 > {
     try {
         let response = await fetch(
-            `${url}/api/getLivro?id=` + params?.id
+            `${process.env.URL}/api/getLivro?id=` + params?.id
         );
 
         let responseFromServer: ResponseFromServer = await response.json();
@@ -69,7 +67,7 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths() {
-    let livros = await fetch(`${url}/api/getLivros`);
+    let livros = await fetch(`${process.env.URL}/api/getLivros`);
 
     let livroFromServer: [Livro] = await livros.json();
     return {
@@ -100,7 +98,7 @@ export default function EditLivro({
         if (livroTitulo && livroResumo && livroEditora && livroAutor) {
             try {
                 let response = await fetch(
-                    `${url}/api/editLivro?id=` + _id,
+                    `${process.env.URL}/api/editLivro?id=` + _id,
                     {
                         method: "POST",
                         body: JSON.stringify({
