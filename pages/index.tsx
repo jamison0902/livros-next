@@ -62,7 +62,7 @@ export default function Livros(props: Props) {
                       <p>{livro.autor}</p>
                     </div>
                     <div>
-                      {/* <a href={`/livros/${livro._id}`}>Editar</a> */}
+                      <a href={`/livros/${livro._id}`}>Editar</a>
                       <button onClick={() => handleDeleteLivro(livro._id as string)}>Deletar</button>
                     </div>
                   </li>

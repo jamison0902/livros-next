@@ -32,7 +32,12 @@ export async function getStaticProps({
     try {
         let response = await fetch(
             `${process.env.URL}/api/getLivro?id=` + params?.id
-        );
+        ).then(res => {
+            if (res.status !== 200) {
+              throw new Error(`There was an error with status code ${res.status}`)
+            }
+            return res.json()
+        });
 
         let responseFromServer: ResponseFromServer = await response.json();
 
