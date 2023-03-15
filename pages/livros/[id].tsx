@@ -4,11 +4,11 @@ import Layout from "../../components/Layout";
 
 type PageParams = {
     id: string;
-};
+}
 
 type ContentPageProps = {
     livro: Livro;
-};
+}
 
 type Livro = {
     _id: string;
@@ -24,13 +24,11 @@ type ResponseFromServer = {
     resumo: string;
     editora: string;
     autor: string;
-};
+}
 
 export async function getStaticProps({
     params,
-}: GetStaticPropsContext<PageParams>): Promise<
-    GetStaticPropsResult<ContentPageProps>
-> {
+}: GetStaticPropsContext<PageParams>): Promise<GetStaticPropsResult<ContentPageProps>> {
     try {
         let response = await fetch(
             `${process.env.URL}/api/getLivro?id=` + params?.id
