@@ -47,33 +47,50 @@ export default function Livros(props: Props) {
 
   return (
     <Layout>
-      <div>
-        <h1 >Top 20 Added Posts</h1>
-        {
-          livros.length > 0 ? (
-            <ul>
-              {livros.map((livro, index) => {
-                return (
-                  <li key={index} >
-                    <div>
-                      <h2>{livro.titulo}</h2>
-                      <p>{livro.resumo}</p>
-                      <p>{livro.editora}</p>
-                      <p>{livro.autor}</p>
-                    </div>
-                    <div>
-                      <a href={`/livros/${livro._id}`}>Editar</a>
-                      <button onClick={() => handleDeleteLivro(livro._id as string)}>Deletar</button>
-                    </div>
-                  </li>
+      <div className="container" style={{ marginTop: '10px' }}>
+        <h2>Catálogo de Livros</h2>
+        <hr className="border border-dark border-1 opacity-50" />
+        <div className="table-responsive">
+          <table className="table table-striped">
+            <thead className="table-success">
+              <tr>
+                <th>Título</th>
+                <th>Resumo</th>
+                <th>Editora</th>
+                <th>Autores</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {
+                livros.length > 0 ? (
+                  livros.map((livro, index) => {
+                    return (
+                      <tr key={index} >
+
+                        <td className="align-middle">{livro.titulo}</td>
+                        <td className="align-middle">{livro.resumo}</td>
+                        <td className="align-middle">{livro.editora}</td>
+                        <td className="align-middle">{livro.autor}</td>
+                        <td className="align-middle">
+                          <a className="m-1 btn btn-success" href={`/livros/${livro._id}`}>Editar</a>
+                          <button className="btn btn-danger" onClick={() => handleDeleteLivro(livro._id as string)}>Deletar</button>
+                        </td>
+                      </tr>
+                    )
+                  }
+                  )) : (
+                  <tr>
+                    <td className="align-middle">Sem Livros para exibir</td>
+                  </tr>
+
                 )
-              })}
-            </ul>
-          ) : (
-            <h2>Sem Livros para exibir</h2>
-          )
-        }
+              }
+            </tbody>
+          </table>
+        </div >
       </div>
-    </Layout>
+    </Layout >
   );
 }

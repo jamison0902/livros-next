@@ -41,35 +41,39 @@ export default function AddLivro() {
 
     return (
         <Layout>
-            <form onSubmit={handleSubmit} >
-                {error ? <div className="alert-error">{error}</div> : null}
-                {message ? <div className="alert-message">{message}</div> : null}
+            <div className="container" style={{ marginTop: '10px' }}>
+                <h2>Cadastro de Livro</h2>
+                <hr className="border border-dark border-1 opacity-50" />
+                <form onSubmit={handleSubmit} >
+                    {error ? <div className="alert alert-danger">{error}</div> : null}
+                    {message ? <div className="alert alert-success">{message}</div> : null}
 
-                <div >
-                    <label>Título</label>
-                    <input type="text" placeholder="Digite o Título" onChange={(e) => setTitulo(e.target.value)} value={titulo} required />
-                </div>
+                    <div className="mb-3">
+                        <label className="form-label">Título</label>
+                        <input type="text" className="form-control" placeholder="Digite o Título" onChange={(e) => setTitulo(e.target.value)} value={titulo} required />
+                    </div>
 
-                <div >
-                    <label>Resumo</label>
-                    <input type="text" placeholder="Digite o Resumo" onChange={(e) => setResumo(e.target.value)} value={resumo} required />
-                </div>
+                    <div className="mb-3">
+                        <label className="form-label">Resumo</label>
+                        <input type="text" className="form-control" placeholder="Digite o Resumo" onChange={(e) => setResumo(e.target.value)} value={resumo} required />
+                    </div>
 
-                <div >
-                    <label>Editora</label>
-                    <input type="text" placeholder="Digite a Editora" onChange={(e) => setEditora(e.target.value)} value={editora} required />
-                </div>
+                    <div className="mb-3">
+                        <label className="form-label">Editora</label>
+                        <input type="text" className="form-control" placeholder="Digite a Editora" onChange={(e) => setEditora(e.target.value)} value={editora} required />
+                    </div>
 
-                <div >
-                    <label>Autor</label>
-                    <input type="text" placeholder="Digite o Autor" onChange={(e) => setAutor(e.target.value)} value={autor} required />
-                </div>
+                    <div className="mb-3">
+                        <label className="form-label">Autor</label>
+                        <input type="text" className="form-control" placeholder="Digite o Autor" onChange={(e) => setAutor(e.target.value)} value={autor} required />
+                    </div>
 
-                <div className="form-group">
-                    <a href="/">Voltar</a>
-                    <button type="submit">Cadastrar</button>
-                </div>
-            </form>
+                    <div className="mb-3">
+                        <a className="btn btn-primary me-3" href="/">Voltar</a>
+                        <button className="btn btn-primary" type="submit">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
         </Layout>
     );
 }
