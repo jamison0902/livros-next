@@ -9,7 +9,7 @@ Foi utilizado MongoDB Atlas, TypeScript e Nextjs no desenvolvimento dessa tela d
 
 ### Configuração de variáveis
 
-É necessário fazer a configuração de acesso ao MongoDB no arquivo `env.local`:
+É necessário fazer a configuração de acesso ao MongoDB no arquivo `.env.local`:
 
 ```bash
 MONGODB_URI = <Aqui você coloca as informações de acesso ao banco mongodb>
